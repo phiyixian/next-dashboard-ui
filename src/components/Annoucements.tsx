@@ -1,6 +1,6 @@
 "use clients"
 
-const Annoucements = () => {
+const Announcements = () => {
     return (
         <div className='bg-white p-4 rounded-md'>
             <div className="flex items-center justify-between">
@@ -34,4 +34,4 @@ const Annoucements = () => {
     )
 }
 
-export default Annoucements
+export default Announcements
