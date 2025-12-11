@@ -4,6 +4,7 @@ import Pagination from "@/components/Pagination"
 import Table from "@/components/Table"
 import Link from "next/link";
 import { role, teachersData } from "@/lib/data";
+import FormModal from "@/components/FormModal";
 
 type Teacher = {
   id: number;
@@ -76,16 +77,20 @@ const TeacherListPage = () => {
       <td className="hidden md:table-cell">{item.address}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
+          {/* <Link href={`/list/teachers/${item.id}`}>
           <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
             <Image src="/view.png" width={16} height={16} alt=""/>
           </button>
-          </Link>
+          </Link> */}
 
           {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
-              <Image src="/delete.png" width={16} height={16} alt=""/>
-            </button>
+            // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+            //   <Image src="/delete.png" width={16} height={16} alt=""/>
+            // </button>
+            <>
+            <FormModal table="teacher" type="update" data={item}/>
+            <FormModal table="teacher" type="delete" id={item.id}/>
+            </>
           )}
           
         </div>
@@ -108,9 +113,10 @@ const TeacherListPage = () => {
               <Image src="/sort.png" alt="filter" width={14} height={14}/>
             </button>
             {role === "admin" && (
-              <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
-                <Image src="/delete.png" width={16} height={16} alt=""/>
-              </button>
+              // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+              //   <Image src="/delete.png" width={16} height={16} alt=""/>
+              // </button>
+              <FormModal table="teacher" type="create"/>
             )}
           </div>
         </div>
