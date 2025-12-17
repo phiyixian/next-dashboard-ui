@@ -1,4 +1,4 @@
-import { Day, PrismaClient, UserSex } from "@prisma/client";
+import { Day, PrismaClient, UserSex } from "@/generated/prisma";
 const prisma = new PrismaClient();
 
 async function main() {
@@ -67,7 +67,7 @@ async function main() {
         address: `Address${i}`,
         bloodType: "A+",
         sex: i % 2 === 0 ? UserSex.MALE : UserSex.FEMALE,
-        subjects: { connect: [{ id: (i % 10) + 1 }] }, 
+        subject: { connect: [{ id: (i % 10) + 1 }] },
         classes: { connect: [{ id: (i % 6) + 1 }] }, 
         birthday: new Date(new Date().setFullYear(new Date().getFullYear() - 30)),
       },

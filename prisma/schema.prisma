@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
@@ -32,6 +32,7 @@ model Student {
   grade Grade @relation(fields: [gradeId], references: [id])
   attendance Attendance[]
   results Result[]
+  birthday DateTime
 }
 
 model Teacher {
@@ -49,6 +50,7 @@ model Teacher {
   subject Subject[]
   lessons Lesson[]
   classes Class[]
+  birthday DateTime
 }
 
 model Parent {
@@ -129,7 +131,7 @@ model Assignment {
   id Int @id @default(autoincrement())
   title String
   startDate DateTime
-  endDate DateTime
+  dueDate DateTime
 
   lessonId Int
   lesson Lesson @relation(fields: [lessonId], references: [id])
